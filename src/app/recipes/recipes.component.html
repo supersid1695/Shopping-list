@@ -1,7 +1,28 @@
-<!DOCTYPE html>
-<div class="col-md-5">
-  <app-recipe-list></app-recipe-list>
-</div>
-<div class="col-md-7">
-  <app-recipe-details></app-recipe-details>
-</div>
+<!Doctype html5>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-5">
+      <app-recipe-list ></app-recipe-list>
+    </div>
+    <div class="col-md-7">
+      <router-outlet></router-outlet>
+      <!-- <app-recipe-detail *ngIf="selectedRecipe ; else infoText"
+      [recipe]="selectedRecipe">
+      </app-recipe-detail>
+      <ng-template #infoText>
+        <p>Please select a recipe</p>
+      </ng-template> -->
+    </div>
+  </div>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shop-receipy-list-project": {
+    "shopping-list": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/shop-receipy-list-project",
+            "outputPath": "dist/shopping-list",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,19 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -45,31 +43,29 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "shop-receipy-list-project:build"
+            "browserTarget": "shopping-list:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "shop-receipy-list-project:build:production"
+              "browserTarget": "shopping-list:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shop-receipy-list-project:build"
+            "browserTarget": "shopping-list:build"
           }
         },
         "test": {
@@ -103,7 +99,7 @@
         }
       }
     },
-    "shop-receipy-list-project-e2e": {
+    "shopping-list-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -112,11 +108,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "shop-receipy-list-project:serve"
+            "devServerTarget": "shopping-list:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "shop-receipy-list-project:serve:production"
+              "devServerTarget": "shopping-list:serve:production"
             }
           }
         },
@@ -132,5 +128,5 @@
       }
     }
   },
-  "defaultProject": "shop-receipy-list-project"
+  "defaultProject": "shopping-list"
 }
