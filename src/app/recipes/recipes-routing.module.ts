@@ -27,7 +27,9 @@ const recipeRoutes: Routes = [
     imports: [
         RouterModule.forChild(recipeRoutes)
     ],
-    providers: [],
+    providers: [
+        AuthGuard
+    ],
     exports: [
         RouterModule
     ]

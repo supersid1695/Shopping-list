@@ -28,4 +28,8 @@ export class HeaderComponent {
     onLogout() {
         this.auth.logOut();
     }
+
+    isAuthenticated() {
+        return this.auth.isAuthenticated();
+    }
 }
