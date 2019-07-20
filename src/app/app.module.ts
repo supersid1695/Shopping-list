@@ -20,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 import { DataStorageservice } from './shared/data-storage.service';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { DataStorageservice } from './shared/data-storage.service';
     ShoppingEditComponent,
     DropdowmDirectiveDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { DataStorageservice } from './shared/data-storage.service';
     HttpClientModule,
     HttpModule
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageservice],
+  providers: [ShoppingListService, RecipeService, DataStorageservice, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
