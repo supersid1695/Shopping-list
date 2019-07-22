@@ -7,6 +7,9 @@ import { RecipeService } from '../recipes/recipes.service';
 import { HeaderComponent } from './header/header.component';
 import { DataStorageservice } from '../shared/data-storage.service';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../shared/auth.interceptor';
+import { Logger } from '../shared/logger.interceptor';
 
 @NgModule({
     declarations: [
@@ -21,6 +24,21 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
         AppRoutingModule,
         HeaderComponent
     ],
-    providers: [ShoppingListService, RecipeService, DataStorageservice, AuthService],
+    providers: [
+        ShoppingListService,
+        RecipeService,
+        DataStorageservice,
+        AuthService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: Logger,
+            multi: true
+        }
+    ],
 })
 export class CoreModule { }

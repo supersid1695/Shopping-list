@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { DataStorageservice } from 'src/app/shared/data-storage.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -15,9 +15,17 @@ export class HeaderComponent {
         this.selectedFeature.emit(feature);
     }
     constructor(private dataService: DataStorageservice, private auth: AuthService) { }
+    // onSaveData() {
+    //     this.dataService.storeRecipe().subscribe(
+    //         (response: HttpResponse<any>) => console.log(response)
+    //     );
+    // }
     onSaveData() {
         this.dataService.storeRecipe().subscribe(
-            (response: HttpResponse<any>) => console.log(response)
+            (response: HttpEvent<any>) => {
+                // console.log(response);
+                // console.log(response.type === HttpEventType.Response);
+            }
         );
     }
 
