@@ -1,30 +1,37 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { HttpResponse, HttpEvent, HttpEventType } from '@angular/common/http';
-import { DataStorageservice } from 'src/app/shared/data-storage.service';
+import { Store } from '@ngrx/store';
+import { HttpEvent } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
-
+import * as app_reducers from '../../store/app.reducers';
+import * as auth_reducers from '../../auth/store/auth.reducers';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { DataStorageservice } from 'src/app/shared/data-storage.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+    authState: Observable<auth_reducers.State>;
     @Output() selectedFeature = new EventEmitter<string>();
+
+    constructor(private dataService: DataStorageservice,
+        private auth: AuthService,
+        private store: Store<app_reducers.AppState>) { }
+
+    ngOnInit() {
+        this.authState = this.store.select('auth');
+    }
+
     onSelect(feature: string) {
         this.selectedFeature.emit(feature);
     }
-    constructor(private dataService: DataStorageservice, private auth: AuthService) { }
-    // onSaveData() {
-    //     this.dataService.storeRecipe().subscribe(
-    //         (response: HttpResponse<any>) => console.log(response)
-    //     );
-    // }
+
     onSaveData() {
         this.dataService.storeRecipe().subscribe(
             (response: HttpEvent<any>) => {
-                // console.log(response);
-                // console.log(response.type === HttpEventType.Response);
+                console.log(response);
             }
         );
     }
@@ -37,7 +44,4 @@ export class HeaderComponent {
         this.auth.logOut();
     }
 
-    isAuthenticated() {
-        return this.auth.isAuthenticated();
-    }
 }
