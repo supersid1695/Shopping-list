@@ -21,6 +21,7 @@ export function authReducer(state = initialState, action: auth_actions.AuthActio
         case (auth_actions.SIGNOUT):
             return {
                 ...state,
+                token: null,
                 authenticated: false
             };
         case (auth_actions.SET_TOKEN):
