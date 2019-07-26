@@ -13,7 +13,6 @@ import { reducers } from './store/app.reducers';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffect } from './auth/store/auth.effects';
-// import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './../environments/environment';
 

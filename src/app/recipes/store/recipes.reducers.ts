@@ -1,8 +1,9 @@
 import * as recipe_actions from './recipe.actions';
 import { Recipe } from '../recipes.model';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+import * as app_reducers from '../../store/app.reducers';
 
-export interface Features {
+export interface Features extends app_reducers.AppState {
     recipes: State;
 }
 
@@ -42,7 +43,7 @@ export function recipeReducers(state = initialState, action: recipe_actions.Reci
         case (recipe_actions.ADD_RECIPE):
             return {
                 ...state,
-                ...action.payload
+                recipes: [...state.recipes, action.payload]
             };
         case (recipe_actions.UPDATE_RECIPE):
             const recipe = state.recipes[action.payload.id];
