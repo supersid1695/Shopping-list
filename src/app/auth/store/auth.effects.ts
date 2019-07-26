@@ -51,7 +51,6 @@ export class AuthEffect {
             return from(firebaseAuth().currentUser.getIdToken());
         }),
         mergeMap((token: string) => {
-            console.log('here');
             this.router.navigate(['/']);
             return [{
                 type: AuthActions.SIGNIN

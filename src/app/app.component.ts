@@ -10,11 +10,10 @@ export class AppComponent implements OnInit {
   title = 'shopping-list';
   loadedFeature = 'recipe';
 
-  ngOnInit(){
+  ngOnInit() {
     firebase.initializeApp({
       apiKey: 'AIzaSyBBHK761GdV7qSR3L4Mrp8JMHj7fitqxVo',
       authDomain: 'ng-shopping-list-5fdbc.firebaseapp.com'
     });
   }
 }
-
