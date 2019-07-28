@@ -1,6 +1,6 @@
 import * as recipe_actions from './recipe.actions';
 import { Recipe } from '../recipes.model';
-import { Ingredient } from 'src/app/shared/ingredient.model';
+import { Ingredient } from '../../shared/ingredient.model';
 import * as app_reducers from '../../store/app.reducers';
 
 export interface Features extends app_reducers.AppState {

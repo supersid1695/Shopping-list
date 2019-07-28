@@ -21,7 +21,8 @@ import { environment } from './../environments/environment';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'shopping-list' }),
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
